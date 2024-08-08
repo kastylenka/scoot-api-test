@@ -1,0 +1,34 @@
+version: '3'
+services:
+  scoot-api-test-1:
+    image: scoot-api-test:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - scoot-api-test-network
+
+  scoot-api-test-2:
+    image: scoot-api-test:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - scoot-api-test-network
+
+  nginx:
+    image: nginx-proxy:latest
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - scoot-api-test-1
+      - scoot-api-test-2
+    networks:
+      - scoot-api-test-network
+
+networks:
+  scoot-api-test-network:
+    driver: bridge
