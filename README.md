@@ -43,6 +43,8 @@ Second mechanism is implemented using nginx proxy.
 First of all it separates rate limiting functionality from application.
 Second - is that we can configure it under multiple instances of application, because rate limiting happens before traffic balancing.
 
+Before running, set application.yaml property aspect.rate-limited.enabled: false 
+
 Run in docker (from project root directory):
 - docker-compose build
 - docker-compose up -d
