@@ -4,7 +4,8 @@
 There is one endpoint that consumes start and end points as coordinates with latitude and longitude, 
 and responds with distance between them in kilometers as floating number with up to 4 decimals.
 
-POST http://{host}/scoot/api/calculations/distance
+POST http://{host}/scoot/api/calculations/distance 
+
 Request body:
 ```json
 {
